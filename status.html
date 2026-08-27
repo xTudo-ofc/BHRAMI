@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Status do WebSDR BHRAMI." />
+    <title>BHRAMI — Status</title>
+    <style>
+      :root {
+        --ink: #101a2c;
+        --blue: #2445ea;
+        --aqua: #50e2dc;
+        --paper: #f6f7ff;
+        --muted: #64708a;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        display: grid;
+        min-height: 100vh;
+        margin: 0;
+        place-items: center;
+        overflow: hidden;
+        color: var(--ink);
+        background: var(--paper);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      .orb {
+        position: fixed;
+        width: min(62vw, 800px);
+        aspect-ratio: 1;
+        top: -37vw;
+        right: -18vw;
+        border-radius: 50%;
+        background: radial-gradient(circle at 35% 35%, #b0fff2, var(--aqua) 38%, #a1b1ff 71%, transparent 72%);
+        opacity: .68;
+        pointer-events: none;
+      }
+
+      main {
+        width: min(100% - 48px, 690px);
+        padding: clamp(34px, 7vw, 72px);
+        border: 1px solid rgba(36, 69, 234, .09);
+        border-radius: 28px;
+        background: rgba(255, 255, 255, .75);
+        box-shadow: 0 24px 70px rgba(28, 45, 94, .12);
+        backdrop-filter: blur(14px);
+      }
+
+      .brand {
+        display: inline-block;
+        color: var(--ink);
+        font-size: 1.05rem;
+        font-weight: 850;
+        letter-spacing: .18em;
+        text-decoration: none;
+      }
+
+      .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: clamp(44px, 8vw, 80px) 0 15px;
+        color: var(--blue);
+        font-size: .77rem;
+        font-weight: 800;
+        letter-spacing: .13em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #27be86;
+        box-shadow: 0 0 0 6px rgba(39, 190, 134, .14);
+        content: "";
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(3rem, 9vw, 5.8rem);
+        font-weight: 850;
+        letter-spacing: -.07em;
+        line-height: .9;
+      }
+
+      h1 span { color: var(--blue); }
+
+      #status-text {
+        max-width: 500px;
+        margin: 25px 0 35px;
+        color: var(--muted);
+        font-size: clamp(1.05rem, 2vw, 1.2rem);
+        line-height: 1.65;
+      }
+
+      .back {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--ink);
+        font-size: .92rem;
+        font-weight: 750;
+        text-decoration: none;
+      }
+
+      .back::before {
+        display: grid;
+        width: 31px;
+        height: 31px;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--aqua);
+        content: "←";
+        transition: transform .2s ease;
+      }
+
+      .back:hover::before { transform: translateX(-4px); }
+      .back:focus-visible { outline: 3px solid var(--blue); outline-offset: 5px; }
+
+      @media (max-width: 560px) {
+        .orb { width: 85vw; top: -25vw; right: -35vw; }
+        main { width: min(100% - 32px, 690px); border-radius: 22px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="orb" aria-hidden="true"></div>
+    <main>
+      <a class="brand" href="index.html">BHRAMI</a>
+      <p class="eyebrow">Sistema online</p>
+      <h1>Status do <span>WebSDR.</span></h1>
+      <p id="status-text">O WebSDR BHRAMI está online e pronto para receber você.</p>
+      <a class="back" href="index.html">Voltar ao início</a>
+    </main>
+
+    <script>
+      const message = new URLSearchParams(window.location.search).get("texto");
+      if (message) document.getElementById("status-text").textContent = message;
+    </script>
+  </body>
+</html>
