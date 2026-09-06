@@ -1,61 +1,242 @@
+```html
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Tutorial BHRAMI para montar seu próprio WebSDR." />
+<title>BHRAMI — Monte seu WebSDR</title>
+
+<style>
+
+:root {
+--ink: #101a2c;
+--blue: #2445ea;
+--aqua: #50e2dc;
+--paper: #f6f7ff;
+--muted: #64708a;
+}
+
+* {
+box-sizing: border-box;
+}
+
+body {
+display: grid;
+min-height: 100vh;
+margin: 0;
+place-items: center;
+overflow-x: hidden;
+color: var(--ink);
+background: var(--paper);
+font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body::before {
+position: fixed;
+width: min(62vw, 800px);
+aspect-ratio: 1;
+top: -37vw;
+right: -18vw;
+border-radius: 50%;
+background: radial-gradient(circle at 35% 35%, #b0fff2, var(--aqua) 38%, #a1b1ff 71%, transparent 72%);
+opacity: .68;
+pointer-events: none;
+content: "";
+}
+
+.tutorial {
+position: relative;
+width: min(100% - 48px, 850px);
+max-height: calc(100vh - 48px);
+overflow-y: auto;
+padding: clamp(34px, 7vw, 72px);
+border: 1px solid rgba(36, 69, 234, .09);
+border-radius: 28px;
+background: rgba(255, 255, 255, .75);
+box-shadow: 0 24px 70px rgba(28, 45, 94, .12);
+backdrop-filter: blur(14px);
+}
+
+.tutorial h2 {
+margin: 0 0 30px;
+font-size: clamp(2.5rem, 7vw, 5rem);
+font-weight: 850;
+letter-spacing: -.07em;
+line-height: .95;
+}
+
+.tutorial h2::after {
+display: block;
+width: 70px;
+height: 6px;
+margin-top: 22px;
+border-radius: 999px;
+background: var(--aqua);
+content: "";
+}
+
+.tutorial p {
+max-width: 700px;
+margin: 0 0 22px;
+color: var(--muted);
+font-size: 1.05rem;
+line-height: 1.7;
+}
+
+.tutorial ul {
+max-width: 700px;
+margin: 0 0 28px;
+padding-left: 24px;
+color: var(--muted);
+font-size: 1.05rem;
+line-height: 1.7;
+}
+
+.tutorial li {
+margin-bottom: 8px;
+}
+
+.tutorial pre {
+width: fit-content;
+max-width: 100%;
+margin: 0 0 22px;
+padding: 14px 18px;
+overflow-x: auto;
+border-radius: 10px;
+color: white;
+background: var(--ink);
+font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+font-size: .95rem;
+}
+
+.back {
+display: inline-flex;
+align-items: center;
+gap: 10px;
+margin-top: 8px;
+color: var(--ink);
+font-size: .92rem;
+font-weight: 750;
+text-decoration: none;
+}
+
+.back::before {
+display: grid;
+width: 31px;
+height: 31px;
+place-items: center;
+border-radius: 50%;
+background: var(--aqua);
+content: "←";
+transition: transform .2s ease;
+}
+
+.back:hover::before {
+transform: translateX(-4px);
+}
+
+.back:focus-visible {
+outline: 3px solid var(--blue);
+outline-offset: 5px;
+}
+
+@media (max-width: 560px) {
+
+body::before {
+width: 85vw;
+top: -25vw;
+right: -35vw;
+}
+
+.tutorial {
+width: min(100% - 32px, 850px);
+max-height: calc(100vh - 32px);
+padding: 34px 26px;
+border-radius: 22px;
+}
+
+.tutorial h2 {
+font-size: clamp(2.5rem, 13vw, 4rem);
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
 <div class="tutorial">
 
-    <h2>Como montar seu próprio WebSDR</h2>
+<h2>Como montar seu próprio WebSDR</h2>
 
-    <p>
-        Para criar seu próprio WebSDR você precisará de:
-    </p>
+<p>
+Para criar seu próprio WebSDR você precisará de:
+</p>
 
-    <ul>
-        <li>QUALQUER DONGLE SDR USB (EX: RTL-SDR)</li>
-        <li>ANTENA COMPATÍVEL (CASEIRA/COMERCIAL) QUE PODE RECEPCIONAR A FAIXA ALVO</li>
-        <li>UM COMPUTADOR LINUX/WINDOWS/RASPBERRY PI/MAC</li>
-        <li>DOMÍNIO OU QUICK TUNNEL CLOUDFLARE</li>
-    </ul>
+<ul>
 
-    <p>
-        Para criar você tem que baixar o software OpenWebRX original.
-        No Windows você tem que usar o Docker + WSL. No Linux tem como
-        instalar diretamente, incluindo Raspberry Pi.
-    </p>
+<li>QUALQUER DONGLE SDR USB (EX: RTL-SDR)</li>
 
-    <p>
-        Após a instalação, execute o programa OpenWebRX com seu SDR conectado.
-        No Windows Docker é necessário o USBIPD.
-    </p>
+<li>ANTENA COMPATÍVEL (CASEIRA/COMERCIAL) QUE PODE RECEPCIONAR A FAIXA ALVO</li>
 
-    <p>
-        Após isso, você deve pegar a porta local que o Docker gera
-        (EX: 8080:8080). Você deve pegar o número, por exemplo 8080,
-        e no navegador do seu computador digitar:
-    </p>
+<li>UM COMPUTADOR LINUX/WINDOWS/RASPBERRY PI/MAC</li>
 
-    <pre>localhost:8080</pre>
+<li>DOMÍNIO OU QUICK TUNNEL CLOUDFLARE</li>
 
-    <p>
-        Esse número é a porta que deve ser usada.
-    </p>
+</ul>
 
-    <p>
-        Após isso, você deve usar um domínio que é pago, como example.com,
-        ou um Quick Tunnel da Cloudflare (não é recomendado), em modo
-        Túnel, passando sua porta (EX: 8080) para seu domínio
-        (exemplo.exemplo) ou para um Quick Tunnel.
-    </p>
+<p>
+Para criar você tem que baixar o software OpenWebRX original.
+No Windows você tem que usar o Docker + WSL. No Linux tem como
+instalar diretamente, incluindo Raspberry Pi.
+</p>
 
-    <p>
-        Após esse passo, teste: abra seu domínio ou Quick Tunnel.
-        Se abrir o OpenWebRX, você conseguiu criar seu próprio WebSDR.
-    </p>
+<p>
+Após a instalação, execute o programa OpenWebRX com seu SDR conectado.
+No Windows Docker é necessário o USBIPD.
+</p>
 
-    <p>
-        Lembre-se de que todas as informações preenchidas nas settings
-        devem estar corretas e preenchidas.
-    </p>
+<p>
+Após isso, você deve pegar a porta local que o Docker gera
+(EX: 8080:8080). Você deve pegar o número, por exemplo 8080,
+e no navegador do seu computador digitar:
+</p>
 
-    <p>
-        Obrigado por ver nosso tutorial! Se precisar de mais informações,
-        contate-me ou pesquise.
-    </p>
+<pre>localhost:8080</pre>
+
+<p>
+Esse número é a porta que deve ser usada.
+</p>
+
+<p>
+Após isso, você deve usar um domínio que é pago, como example.com,
+ou um Quick Tunnel da Cloudflare (não é recomendado), em modo
+Túnel, passando sua porta (EX: 8080) para seu domínio
+(exemplo.exemplo) ou para um Quick Tunnel.
+</p>
+
+<p>
+Após esse passo, teste: abra seu domínio ou Quick Tunnel.
+Se abrir o OpenWebRX, você conseguiu criar seu próprio WebSDR.
+</p>
+
+<p>
+Lembre-se de que todas as informações preenchidas nas settings
+devem estar corretas e preenchidas.
+</p>
+
+<p>
+Obrigado por ver nosso tutorial! Se precisar de mais informações,
+contate-me ou pesquise.
+</p>
+
+<a class="back" href="index.html">Voltar para o portal BHRAMI</a>
 
 </div>
+
+</body>
+</html>
+```
