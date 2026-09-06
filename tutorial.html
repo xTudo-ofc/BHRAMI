@@ -1,133 +1,61 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="tutorial">
 
-    <title>Monte seu WebSDR | BHRAMI</title>
+    <h2>Como montar seu próprio WebSDR</h2>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+    <p>
+        Para criar seu próprio WebSDR você precisará de:
+    </p>
 
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #0b0f14;
-            color: #e8edf2;
-        }
+    <ul>
+        <li>QUALQUER DONGLE SDR USB (EX: RTL-SDR)</li>
+        <li>ANTENA COMPATÍVEL (CASEIRA/COMERCIAL) QUE PODE RECEPCIONAR A FAIXA ALVO</li>
+        <li>UM COMPUTADOR LINUX/WINDOWS/RASPBERRY PI/MAC</li>
+        <li>DOMÍNIO OU QUICK TUNNEL CLOUDFLARE</li>
+    </ul>
 
-        header {
-            padding: 30px 8%;
-            border-bottom: 1px solid #252d36;
-            background: #0d1218;
-        }
+    <p>
+        Para criar você tem que baixar o software OpenWebRX original.
+        No Windows você tem que usar o Docker + WSL. No Linux tem como
+        instalar diretamente, incluindo Raspberry Pi.
+    </p>
 
-        header h1 {
-            margin: 0;
-            font-size: 32px;
-        }
+    <p>
+        Após a instalação, execute o programa OpenWebRX com seu SDR conectado.
+        No Windows Docker é necessário o USBIPD.
+    </p>
 
-        main {
-            width: 84%;
-            max-width: 1000px;
-            margin: 40px auto;
-        }
+    <p>
+        Após isso, você deve pegar a porta local que o Docker gera
+        (EX: 8080:8080). Você deve pegar o número, por exemplo 8080,
+        e no navegador do seu computador digitar:
+    </p>
 
-        .back {
-            display: inline-block;
-            margin-bottom: 25px;
-            padding: 10px 16px;
-            border: 1px solid #303a45;
-            border-radius: 8px;
-            color: #e8edf2;
-            text-decoration: none;
-        }
+    <pre>localhost:8080</pre>
 
-        .back:hover {
-            background: #171e26;
-        }
+    <p>
+        Esse número é a porta que deve ser usada.
+    </p>
 
-        .tutorial {
-            background: #111820;
-            border: 1px solid #252f39;
-            border-radius: 14px;
-            padding: 35px;
-        }
+    <p>
+        Após isso, você deve usar um domínio que é pago, como example.com,
+        ou um Quick Tunnel da Cloudflare (não é recomendado), em modo
+        Túnel, passando sua porta (EX: 8080) para seu domínio
+        (exemplo.exemplo) ou para um Quick Tunnel.
+    </p>
 
-        .tutorial h2 {
-            margin-top: 0;
-            font-size: 26px;
-        }
+    <p>
+        Após esse passo, teste: abra seu domínio ou Quick Tunnel.
+        Se abrir o OpenWebRX, você conseguiu criar seu próprio WebSDR.
+    </p>
 
-        .tutorial p {
-            color: #c1cbd5;
-            line-height: 1.8;
-            font-size: 16px;
-        }
+    <p>
+        Lembre-se de que todas as informações preenchidas nas settings
+        devem estar corretas e preenchidas.
+    </p>
 
-        footer {
-            text-align: center;
-            padding: 35px;
-            color: #707c88;
-            font-size: 14px;
-        }
-    </style>
-</head>
+    <p>
+        Obrigado por ver nosso tutorial! Se precisar de mais informações,
+        contate-me ou pesquise.
+    </p>
 
-<body>
-
-<header>
-    <!-- EDITE O TÍTULO AQUI -->
-    <h1>Monte seu próprio WebSDR</h1>
-</header>
-
-<main>
-
-    <a class="back" href="index.html">← Voltar para o BHRAMI</a>
-
-    <div class="tutorial">
-
-        <!-- EDITE O TÍTULO DO TEXTO AQUI -->
-        <h2>Como montar seu próprio WebSDR</h2>
-
-        <!-- EDITE TODO O TEXTO DO TUTORIAL AQUI -->
-        <p>
-            Para criar seu próprio WebSDR você precisará de:
-          - QUALQUER DONGLE SDR USB (EX: RTL SDR)
-          - ANTENA COMPATÍVEL (CASEIRA/COMERCIAL) QUE PODE
-            RECEPCIONAR A FAIXA ALVO
-          - UM COMPUTADOR LINUX/WINDOWS/RASPBERRY PI/MAC
-          - DOMÍNIO/QUICK TUNNEL CLOUDFLARE
-          Para criar você tem que baixar o software OpenWebRX original, no
-          windows você tem que usar o docker+WSL, no linux tem como instalar
-          diretamente incluindo Raspberry PI.
-
-          Após a instalação execute o programa OpenWebRX com seu SDR conectado
-          (no WIndows Docker é necessario o USBIPD) após isso, você deve pegar a
-          porta local que o docker gera (EX: 8080:8080), você deve pegar o número
-          por exemplo 8080 e no navegador do seu computador digitar: localhost:8080
-          esse número é a porta que deve ser usada, após isso você deve usar um domínio
-          que é pago como example.com ou um Quick Tunnel da Cloudflare (não é recomendado)
-          em modo Túnel passando sua porta (EX: 8080) para (exemplo.exemplo) ou para um
-          quick tunnel, após esse passo, teste: abra seu domínio ou quick tunnel, se
-          abrir o OpenWebRX você conseguiu criar o próprio websdr, lempre-se de todas
-          as informações preenchidas na settings estarem corretas e preenchidas.
-        </p>
-
-        <p>
-           Obrigado por ver nosso tutorial, se precisar de mais informações contate-me
-          ou pesquise.
-        </p>
-
-    </div>
-
-</main>
-
-<footer>
-    BHRAMI • Belo Horizonte, MG
-</footer>
-
-</body>
-</html>
+</div>
